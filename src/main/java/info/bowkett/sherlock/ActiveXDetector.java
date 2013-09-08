@@ -12,7 +12,7 @@ package info.bowkett.sherlock;
 public class ActiveXDetector {
   public boolean willRequestActiveX(String urlContent) {
 
-    return removeLineBreaks(urlContent.toLowerCase()).matches(".*<embed .*");
+    return removeLineBreaks(urlContent.toLowerCase()).matches(".*<embed .*|.*<object .*");
   }
 
   private String removeLineBreaks(String urlContent) {

@@ -13,7 +13,7 @@ import org.junit.Test;
 public class ActiveXDetectorTest {
 
   @Test
-  public void testHtmlContainingEmbedReturnsTrue(){
+  public void testHtmlContainingEmbedIsDetected(){
 
     final String content = "<HTML>" +
       "<BODY>" +
@@ -30,7 +30,47 @@ public class ActiveXDetectorTest {
   }
 
   @Test
-  public void testHtmlContainingEmbedInUppercaseReturnsTrue(){
+  public void testHtmlContainingObjectIsDetected(){
+
+    final String content = "<HTML>" +
+      "<BODY>" +
+      "<P>" +
+      "</P>" +
+      "<object classid=\"clsid:d27cdb6e-ae6d-11cf-96b8-444553540000\" width=\"100\" height=\"100\" codebase=\"http://active.macromedia.com/flash7/cabs/ swflash.cab#version=9,0,0,0\">\n" +
+      "    <param name=\"movie\" value=\"moviename.swf\">\n" +
+      "    <param name=\"play\" value=\"true\">\n" +
+      "    <param name=\"loop\" value=\"true\">\n" +
+      "    <param name=\"quality\" value=\"high\">\n" +
+      "</object>" +
+      "</BODY>" +
+      "</HTML>";
+
+    final boolean result = new ActiveXDetector().willRequestActiveX(content);
+    Assert.assertTrue(result);
+  }
+
+  @Test
+  public void testHtmlContainingObjectInUppercaseIsDetected(){
+
+    final String content = "<HTML>" +
+      "<BODY>" +
+      "<P>" +
+      "</P>" +
+      "<OBJECT classid=\"clsid:d27cdb6e-ae6d-11cf-96b8-444553540000\" width=\"100\" height=\"100\" codebase=\"http://active.macromedia.com/flash7/cabs/ swflash.cab#version=9,0,0,0\">\n" +
+      "    <param name=\"movie\" value=\"moviename.swf\">\n" +
+      "    <param name=\"play\" value=\"true\">\n" +
+      "    <param name=\"loop\" value=\"true\">\n" +
+      "    <param name=\"quality\" value=\"high\">\n" +
+      "</OBJECT>" +
+      "</BODY>" +
+      "</HTML>";
+
+    final boolean result = new ActiveXDetector().willRequestActiveX(content);
+    Assert.assertTrue(result);
+  }
+
+  @Test
+  public void testHtmlContainingEmbedInUppercaseIsDetected(){
 
     final String content = "<HTML>" +
       "<BODY>" +
