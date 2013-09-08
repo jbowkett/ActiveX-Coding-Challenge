@@ -7,23 +7,28 @@ import java.io.File;
  * User: jbowkett
  * Date: Sep 8, 2013
  * Time: 10:25:51 AM
- * To change this template use File | Settings | File Templates.
+ * Main entry point for application to check all the files in an input directory
  */
 public class Main {
 
 
-  public static void main(String [] args){
+  public static void main(String[] args) {
 
-    if(incorrectArgumentCount(args)){
+    if (incorrectArgumentCount(args)) {
       usage();
       System.exit(-1);
     }
 
     final File inputDir = new File(args[0]);
     final File outputDir = new File(args[1]);
+    final EightDigitsOnlyFilenameFilter fileFilter = new EightDigitsOnlyFilenameFilter();
+
+    final FileChecker checker = new FileChecker(new InputFileReader());
+
     final InputDirectoryChecker dirChecker = new InputDirectoryChecker(inputDir,
-      outputDir, new EightDigitsOnlyFilenameFilter());
-    
+      outputDir, fileFilter,
+      checker);
+
     dirChecker.checkAllFiles();
   }
 
