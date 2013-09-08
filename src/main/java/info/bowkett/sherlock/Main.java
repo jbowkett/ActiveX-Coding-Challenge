@@ -1,5 +1,7 @@
 package info.bowkett.sherlock;
 
+import java.io.File;
+
 /**
  * Created by IntelliJ IDEA.
  * User: jbowkett
@@ -17,8 +19,11 @@ public class Main {
       System.exit(-1);
     }
 
-    final String inputDir = args[0];
-    final String outputDir = args[1];
+    final File inputDir = new File(args[0]);
+    final File outputDir = new File(args[1]);
+
+    final File[] inputFiles = inputDir.listFiles(new EightDigitsOnlyFilenameFilter());
+
 
 
   }
