@@ -23,7 +23,7 @@ public class Main {
     final File outputDir = new File(args[1]);
     final EightDigitsOnlyFilenameFilter fileFilter = new EightDigitsOnlyFilenameFilter();
 
-    final FileChecker checker = new FileChecker(new InputFileReader());
+    final FileChecker checker = new FileChecker(new InputFileReader(), new UrlRetriever(), new ActiveXDetector(), new DetectionLogger());
 
     final InputDirectoryChecker dirChecker = new InputDirectoryChecker(inputDir,
       outputDir, fileFilter,
