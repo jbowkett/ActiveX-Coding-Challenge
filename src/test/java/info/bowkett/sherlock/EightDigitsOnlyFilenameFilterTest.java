@@ -14,30 +14,30 @@ import static org.junit.Assert.assertTrue;
  * Time: 10:45:38 AM
  * To change this template use File | Settings | File Templates.
  */
-public class InputFileFilterTest {
+public class EightDigitsOnlyFilenameFilterTest {
 
   @Test
   public void testCorrectFormatIsAccepted(){
-    final boolean accepted = new InputFileFilter().accept(new File("."), "12345678");
+    final boolean accepted = new EightDigitsOnlyFilenameFilter().accept(new File("."), "12345678");
     assertTrue(accepted);
   }
 
   @Test
   public void testTooLongFormatIsRejected(){
-    final boolean accepted = new InputFileFilter().accept(new File("."), "123456789");
+    final boolean accepted = new EightDigitsOnlyFilenameFilter().accept(new File("."), "123456789");
     Assert.assertFalse(accepted);
 
   }
 
   @Test
   public void testTooShortFormatIsRejected(){
-    final boolean accepted = new InputFileFilter().accept(new File("."), "1234567");
+    final boolean accepted = new EightDigitsOnlyFilenameFilter().accept(new File("."), "1234567");
     Assert.assertFalse(accepted);
   }
 
   @Test
   public void testCharacterFilenameIsRejected(){
-    final boolean accepted = new InputFileFilter().accept(new File("."), "1234567a");
+    final boolean accepted = new EightDigitsOnlyFilenameFilter().accept(new File("."), "1234567a");
     Assert.assertFalse(accepted);
   }
 

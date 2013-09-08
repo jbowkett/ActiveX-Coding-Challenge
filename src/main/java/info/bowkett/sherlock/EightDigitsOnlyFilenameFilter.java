@@ -12,7 +12,7 @@ import java.io.FilenameFilter;
  * Only accept filenames in format: 'XXXXXXXX'. ( where X is  any digit 0-9,
  * filename length is 8 symbols)
  */
-public class InputFileFilter implements FilenameFilter{
+public class EightDigitsOnlyFilenameFilter implements FilenameFilter{
 
   public boolean accept(File dir, String name) {
     return name.matches("[0-9]{8}");
