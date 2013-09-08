@@ -6,8 +6,8 @@ Feature:  Ensure an input file is read and each url is retrieved and assessed
  |http://www.google.co.uk|
  When the file checker is run
  Then the output log will contain:
- |200  http://www.google.co.uk  false|
- |200  http://www.google.co.uk  false|
+ | 200 | http://www.google.co.uk | false |
+ | 200 | http://www.google.co.uk | false |
 
 
 

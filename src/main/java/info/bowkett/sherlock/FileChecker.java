@@ -1,10 +1,6 @@
 package info.bowkett.sherlock;
 
-import sun.font.Type1Font;
-
 import java.io.File;
-import java.io.FileReader;
-import java.io.LineNumberReader;
 import java.util.Iterator;
 
 /**
@@ -12,23 +8,37 @@ import java.util.Iterator;
  * User: jbowkett
  * Date: Sep 8, 2013
  * Time: 11:08:41 AM
- * To change this template use File | Settings | File Templates.
+ *
+ * Checks a file of urls and logs the activeX status of each url in an output file
+ *
  */
 public class FileChecker {
   private InputFileReader inputFileReader;
+  private UrlRetriever urlRetriever;
+  private ActiveXDetector activeXDetector;
+  private final DetectionLogger detectionLogger;
 
-  public FileChecker(InputFileReader inputFileReader) {
+  public FileChecker(InputFileReader inputFileReader, UrlRetriever urlRetriever, ActiveXDetector activeXDetector, DetectionLogger detectionLogger) {
     this.inputFileReader = inputFileReader;
+    this.urlRetriever = urlRetriever;
+    this.activeXDetector = activeXDetector;
+    this.detectionLogger = detectionLogger;
   }
 
 
   public void checkFile(File inputFile, File outputFile) {
-    //read each line in the input file
+    detectionLogger.openFile(outputFile);
     final Iterator<String> urls = inputFileReader.readFile(inputFile);
-    //open url
-    //hand url to the active x detector
-    //write result to output file
 
+    while(urls.hasNext()){
+      final UrlResponse response = urlRetriever.getUrl(urls.next());
+      // todo/note: outputs the ultimate url, not the original url     
+      detectionLogger.log(response.getHttpResponseCode(), response.getUrl(), isActiveX(response));
+    }
+    detectionLogger.closeFile(outputFile);
   }
 
+  private boolean isActiveX(UrlResponse response) {
+    return response.wasFound() && activeXDetector.willRequestActiveX(response.getUrlContent());
+  }
 }
