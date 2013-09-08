@@ -14,11 +14,13 @@ public class InputDirectoryChecker {
   private final File inputDir;
   private final File outputDir;
   private EightDigitsOnlyFilenameFilter filter;
+  private final FileChecker fileChecker;
 
-  public InputDirectoryChecker(File inputDir, File outputDir, EightDigitsOnlyFilenameFilter filter) {
+  public InputDirectoryChecker(File inputDir, File outputDir, EightDigitsOnlyFilenameFilter filter, FileChecker fileChecker) {
     this.inputDir = inputDir;
     this.outputDir = outputDir;
     this.filter = filter;
+    this.fileChecker = fileChecker;
   }
 
   public void checkAllFiles() {
@@ -37,9 +39,6 @@ public class InputDirectoryChecker {
   }
 
   private void checkFile(File inputFile, File outputFile) {
-
-
+    fileChecker.checkFile(inputFile, outputFile);
   }
-
-
 }
