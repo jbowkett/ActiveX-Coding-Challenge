@@ -58,7 +58,7 @@ public class FileCheckerStepDefs {
 
   @When("^the file checker is run$")
   public void the_file_checker_is_run() throws Throwable {
-    checker.checkFile(new File(""), new File("output.txt"));
+    checker.checkFile(new File(""), new File(""));
   }
 
   @Then("^the output log will contain:$")
