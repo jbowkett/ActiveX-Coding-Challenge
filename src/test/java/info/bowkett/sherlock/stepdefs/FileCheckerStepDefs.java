@@ -41,6 +41,10 @@ public class FileCheckerStepDefs {
   private DetectionLogger stubLogger() {
     return new DetectionLogger(){
       @Override
+      public void openFile(File outputFile) {
+      }
+
+      @Override
       public void log(int httpResponseCode, String url, boolean activeX){
         responses.add(new Response(httpResponseCode, url, activeX));
       }
