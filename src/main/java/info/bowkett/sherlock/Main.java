@@ -21,12 +21,12 @@ public class Main {
 
     final File inputDir = new File(args[0]);
     final File outputDir = new File(args[1]);
-
-    final File[] inputFiles = inputDir.listFiles(new EightDigitsOnlyFilenameFilter());
-
-
-
+    final InputDirectoryChecker dirChecker = new InputDirectoryChecker(inputDir,
+      outputDir, new EightDigitsOnlyFilenameFilter());
+    
+    dirChecker.checkAllFiles();
   }
+
 
   private static void usage() {
     System.err.println("Usage :\nMain <input directory> <output directory>");
