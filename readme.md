@@ -1,4 +1,4 @@
-# Readme for Sherlock Coding Challenge by James Bowkett #
+# Readme for ActiveX Coding Challenge by James Bowkett #
 
 
 ## Notes on unpacking ##
@@ -31,11 +31,6 @@
 
 
 ## Original challenge ##
-
-http://sherlock.adnxs.net/coding_task/java.txt
-Username: jbowkett
-Passwd: eix1eeh8ZeeD
-
 
 
 Problem:
@@ -78,4 +73,3 @@ It will be a plus if you can implement those checks as well.
 - Please don't forget to include sources and instructions on how to run your application.
 - Please don't ask about ActiveX detection methods, research is the part of the task.
 
-If you have questions regarding the task please contact Sergei Batiukov <sbatiukov@appnexus.com>.
