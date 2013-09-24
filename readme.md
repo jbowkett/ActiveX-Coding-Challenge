@@ -73,3 +73,4 @@ It will be a plus if you can implement those checks as well.
 - Please don't forget to include sources and instructions on how to run your application.
 - Please don't ask about ActiveX detection methods, research is the part of the task.
 
+
